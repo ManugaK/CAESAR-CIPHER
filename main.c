@@ -46,3 +46,29 @@ void decrypt(char *message, int key, char *result) {
     }
     result[strlen(message)] = '\0';
 }
+int main() {
+    char choice;
+    char message[1000], result[1000];
+    int key;
+
+    initQueue();
+
+    printf("Encryption (E) or Decryption (D)?: ");
+    scanf(" %c", &choice);
+    getchar(); // clear newline
+
+    if (choice == 'E' || choice == 'e') {
+        printf("Enter your message: ");
+        fgets(message, sizeof(message), stdin);
+        message[strcspn(message, "\n")] = '\0';
+
+        printf("Enter shift key: ");
+        scanf("%d", &key);
+
+        encrypt(message, key, result);
+        printf("***********\n");
+        printf("Encrypted Message: %s\n", result);
+    }
+    
+    return 0;
+}
