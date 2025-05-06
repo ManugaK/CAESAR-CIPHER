@@ -30,3 +30,19 @@ char decryptChar(char ch, int key) {
     int pos = (ch - 'A' - key + SIZE) % SIZE;
     return queue[pos];
 }
+
+// Encrypt full message
+void encrypt(char *message, int key, char *result) {
+    for (int i = 0; message[i] != '\0'; i++) {
+        result[i] = encryptChar(message[i], key);
+    }
+    result[strlen(message)] = '\0';
+}
+
+// Decrypt full message
+void decrypt(char *message, int key, char *result) {
+    for (int i = 0; message[i] != '\0'; i++) {
+        result[i] = decryptChar(message[i], key);
+    }
+    result[strlen(message)] = '\0';
+}
