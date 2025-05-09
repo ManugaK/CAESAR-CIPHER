@@ -3,32 +3,32 @@
 #include <string.h>
 #include "caesar_cipher.h"
 
-char queue[SIZE];
+char queue[SIZE]; // Circular queue to store A–Z
 
 
 // Initialize the circular queue with A–Z
 void initQueue() {
     for (int i = 0; i < SIZE; i++) {
-        queue[i] = 'A' + i;
+        queue[i] = 'A' + i; // Fill the queue with A-Z
     }
 }
 
 // Encrypt a single character
 char encryptChar(char ch, int key) {
-    if (!isalpha(ch)) return ch;
+    if (!isalpha(ch)) return ch; // Leave non-alphabetic characters unchanged
 
-    ch = toupper(ch);
-    int pos = (ch - 'A' + key + SIZE) % SIZE;
-    return queue[pos];
+    ch = toupper(ch); // Convert to uppercase for uniform processing
+    int pos = (ch - 'A' + key + SIZE) % SIZE; // Circular shift using modular arithmetic
+    return queue[pos]; // Return encrypted character
 }
 
 // Decrypt a single character
 char decryptChar(char ch, int key) {
-    if (!isalpha(ch)) return ch;
+    if (!isalpha(ch)) return ch; // Leave non-alphabetic characters unchanged
 
     ch = toupper(ch);
-    int pos = (ch - 'A' - key + SIZE) % SIZE;
-    return queue[pos];
+    int pos = (ch - 'A' - key + SIZE) % SIZE; // Reverse shift for decryption
+    return queue[pos]; // Return decrypted character
 }
 
 // Encrypt full message
