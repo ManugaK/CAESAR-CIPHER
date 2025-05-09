@@ -31,20 +31,20 @@ char decryptChar(char ch, int key) {
     return queue[pos]; // Return decrypted character
 }
 
-// Encrypt full message
+// Encrypt the entire message string using caesar cipher
 void encrypt(char *message, int key, char *result) {
     for (int i = 0; message[i] != '\0'; i++) {
-        result[i] = encryptChar(message[i], key);
+        result[i] = encryptChar(message[i], key); // Encrypt each character
     }
-    result[strlen(message)] = '\0';
+    result[strlen(message)] = '\0';  // null- twrminate the result string
 }
 
-// Decrypt full message
+// Decrypt the entire message string using caesar cipher
 void decrypt(char *message, int key, char *result) {
     for (int i = 0; message[i] != '\0'; i++) {
-        result[i] = decryptChar(message[i], key);
+        result[i] = decryptChar(message[i], key); //Decrypt each character
     }
-    result[strlen(message)] = '\0';
+    result[strlen(message)] = '\0';  // null- twrminate the result string
 }
 
 int main() {
