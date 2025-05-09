@@ -4,7 +4,7 @@
 #include "caesar_cipher.h"
 
 char queue[SIZE];
-int front = 0;
+
 
 // Initialize the circular queue with A–Z
 void initQueue() {
